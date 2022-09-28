@@ -1,0 +1,32 @@
+:root {
+    --main-color: #5a31d5;
+    --active-main-color: #4d28b9;
+}
+.btn {
+    background-color: var(--main-color) !important;
+}
+.btn:focus, .btn:hover, .btn:active {
+    background-color: var(--active-main-color) !important;
+}
+ {
+
+}
+#login-form, #signup-form {
+    max-width: 400px;
+    margin-top: 100px;
+    border: 1px solid #d5d5d5;
+    padding: 30px;
+}
+#login-form h1, #signup-form h1 {
+    font-size: 30px;
+    text-align: center;
+    color: var(--main-color);
+}
+#login-btn {
+    width: 100%;
+    height: 50px;
+}
+.register-tip {
+    margin-top: 30px;
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EZCollect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <!--Materialize Lib-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <%= javascript_importmap_tags %>
+    <script src="<%= javascript_path "lib/requirejs/require.js" %>"></script>
+    <script src="<%= javascript_path "lib/requirejs/requirejs-config.js" %>"></script>
+
+    <!--Materialize Lib-->
+    <script src="<%= javascript_path "lib/materialize/materialize.min.js" %>"></script>
+
+  </head>
+
+  <body>
+    <div class="header">
+
+    </div>
+    <div class="sub-header">
+
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
