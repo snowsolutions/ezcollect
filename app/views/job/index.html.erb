@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="container-header">
+    <div class="page-title">
+      <h1><%= @page_title %></h1>
+    </div>
+    <div class="action-bar">
+      <a href="/job/add" class="btn btn-primary"><%= t('job.action.create') %></a>
+    </div>
+  </div>
+  <div class="col s12 grid-table">
+    <table id="example" class="display" style="width:100%">
+      <thead>
+      <tr>
+        <th><%= t('job.field.title') %></th>
+        <th><%= t('created_at') %></th>
+        <th><%= t('job.field.status') %></th>
+        <th><%= t('job.field.salary_type') %></th>
+        <th><%= t('job.field.salary') %></th>
+        <th><%= t('job.field.quantity') %></th>
+        <th><%= t('job.field.yoe') %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% for item in @collection %>
+        <tr>
+          <td class="cell">
+            <div class="main-content strong-content"><%= item.title %></div>
+            <div class="sub-content">
+              <i class="tiny material-icons">location_on</i>
+              <%= item.location %>
+            </div>
+          </td>
+          <td class="cell">
+            <%= item.created_at.to_fs(:date) %>
+          </td>
+          <td class="cell">
+            <%= JobStatusOption.to_label item.status %>
+          </td>
+          <td class="cell">
+            <%= JobSalaryTypeOption.to_label item.salary_type %>
+          </td>
+          <td class="cell">
+            <%= CurrencyHelper.format_currency(item.salary.to_s) %>
+          </td>
+          <td class="cell">
+            <%= item.quantity %>
+          </td>
+          <td class="cell">
+            <%= item.yoe %>
+          </td>
+          <td class="cell">
+            <div class="row-action-bar">
+              <a class="btn" href="<%= job_view_url(id: item.id) %>"><%= t('edit') %></a>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">
+    require(['jquery', 'dataTable'], function ($) {
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "searching": false
+            });
+        });
+    })
+</script>

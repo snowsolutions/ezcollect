@@ -1,9 +1,9 @@
 class DashboardController < ApplicationController
+  layout "client"
   def index
-    # if session[:is_logged_in]
-    #   redirect_to "/dashboard"
-    # else
-    #   redirect_to "/"
-    # end
+    @user = User.find_by(id: session[:user_id])
+    if session[:user_id] == nil
+      redirect_to login_url, notice: t('401_notice')
+    end
   end
 end

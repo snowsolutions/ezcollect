@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="container-header">
+    <div class="page-title">
+      <h1><%= @page_title %></h1>
+    </div>
+    <div class="form-action action-bar top-bar">
+      <a href="/job" class="btn btn-secondary"><%= t('back') %></a>
+      <button class="btn btn-danger form-model-delete" delete-url="<%= job_delete_url(id: @model.id) %>"><%= t('delete') %></button>
+      <button class="btn form-submit"><%= t('update') %></button>
+    </div>
+  </div>
+  <%= form_with url: "/job/update", method: :put, id: "job-create-form" do |form| %>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('General') %></h2>
+      </div>
+      <div class="">
+        <div class="col s6">
+          <label for="title"><%= t('job.field.title') %></label>
+          <input type="text" id="title" name="job[title]" value="<%= @model.title %>" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="yoe"><%= t('job.field.yoe') %></label>
+          <input type="text" id="yoe" name="job[yoe]" class="validate" value="<%= @model.yoe %>">
+        </div>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('Information') %></h2>
+      </div>
+      <div class="">
+        <div class="col s12">
+          <label for="description"><%= t('job.field.description') %></label>
+          <textarea id="description" name="job[description]" class="ckeditor"><%= @model.description %></textarea>
+        </div>
+        <div class="col s12">
+          <label for="title"><%= t('job.field.must_have_req') %></label>
+          <textarea id="must_have_req" name="job[must_have_req]" class="ckeditor"><%= @model.must_have_req %></textarea>
+        </div>
+        <div class="col s12">
+          <label for="nice_to_have_req"><%= t('job.field.nice_to_have_req') %></label>
+          <textarea id="nice_to_have_req" name="job[nice_to_have_req]" class="ckeditor"><%= @model.nice_to_have_req %></textarea>
+        </div>
+        <div class="col s12">
+          <label for="benefit"><%= t('job.field.benefit') %></label>
+          <textarea class="ckeditor" id="benefit" name="job[benefit]"><%= @model.benefit %></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('Salary') %></h2>
+      </div>
+      <div class="">
+        <div class="col s6">
+          <label for="salary_type"><%= t('job.field.salary_type') %></label>
+          <select name="job[salary_type]" id="salary_type">
+            <% for option in JobSalaryTypeOption.to_option %>
+              <option <%= if @model.salary_type == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col s6">
+          <label for="salary"><%= t('job.field.salary') %></label>
+          <input type="text" id="salary" name="job[salary]" class="validate" value="<%= @model.salary %>">
+        </div>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('Geo information') %></h2>
+      </div>
+      <div class="">
+        <div class="col s12">
+          <label for="location"><%= t('job.field.location') %></label>
+          <input type="text" id="location" name="job[location]" class="validate" value="<%= @model.location %>">
+        </div>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('Schedule') %></h2>
+      </div>
+      <div class="">
+        <div class="col s6">
+          <label for="issue_from"><%= t('job.field.issue_from') %></label>
+          <input type="text" id="issue_from" name="job[issue_from]" class="validate datepicker" value="<%= @model.issue_from.to_fs(:date) %>">
+        </div>
+        <div class="col s6">
+          <label for="issue_to"><%= t('job.field.issue_to') %></label>
+          <input type="text" id="issue_to" name="job[issue_to]" class="validate datepicker" value="<%= @model.issue_to.to_fs(:date) %>">
+        </div>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('Additional') %></h2>
+      </div>
+      <div class="">
+        <div class="col s6">
+          <label for="status"><%= t('job.field.status') %></label>
+          <select name="job[salary_type]" id="salary_type">
+            <% for option in JobStatusOption.to_option %>
+              <option <%= if @model.status == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col s6">
+          <label for="quantity"><%= t('job.field.quantity') %></label>
+          <input type="text" id="quantity" name="job[quantity]" class="validate" value="<%= @model.quantity %>">
+        </div>
+      </div>
+    </div>
+    <input type="hidden" name="job[id]" value="<%= @model.id %>">
+  <% end %>
+  <div class="form-action action-bar bottom-bar">
+    <a href="/job" class="btn btn-secondary"><%= t('back') %></a>
+    <button class="btn form-submit"><%= t('update') %></button>
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">
+    require(['jquery', 'form/util'], function ($, form) {
+        form.init('#job-create-form')
+    })
+</script>

@@ -1,33 +1,71 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  401_notice: "Please login to view this content"
+  401_message: "You're not authorized to view this content"
+  login: "Login to your account"
+  login_message: "Logged in successfully"
+  login_invalid_message: "Email or Password is incorrect. Please check and try again!"
+  logout_message: "Logged out successfully"
+  register_success_message: "Congratulations! Your account has been registered successfully"
+  dont_have_an_account?: "Don't have an account?"
+  register_one!: "Register one!"
+  #General fields text
+  email: "Email address"
+  password: "Password"
+  name: "Name"
+  full_name: "Full Name"
+  dob: "Date Of Birth"
+  gender: "Gender"
+  fax: "Fax"
+  company: "Company"
+  first_name: "First Name"
+  last_name: "Last Name"
+  telephone: "Telephone"
+  created_at: "Created At"
+  updated_at: "Updated At"
+  #General action text
+  create: "Create"
+  submit: "Submit"
+  change: "Change"
+  update: "Update"
+  adjust: "Adjust"
+  delete: "Delete"
+  remove: "Remove"
+  edit: "Edit"
+  view: "View"
+  back: "Back"
+  forward: "Forward"
+  previous: "Previous"
+  next: "Next"
+  choose_one: "Choose one"
+  action:
+    create_success: " has successfully created"
+    create_fail: " has fail to create"
+    update_success: " has successfully to updated"
+    update_fail: " has fail to update"
+    delete_success: " has successfully deleted"
+    delete_fail: " has fail to delete"
+  #Candidate text
+  candidate_listing: "Candidate listing"
+  create_new_candidate: "Create new candidate"
+  #Job text
+  _job: "Job"
+  job:
+    action:
+      view: "Job detail"
+      listing: "Job listing"
+      create: "Create new job"
+    field:
+      title: "Title"
+      status: "Status"
+      yoe: "Year of experience"
+      description: "Description"
+      must_have_req: "Must have experience"
+      nice_to_have_req: "Nice to have experience"
+      benefit: "Benefit"
+      location: "Location"
+      salary_type: "Salary Type"
+      salary: "Salary"
+      user_id: "Create by"
+      quantity: "Quantity"
+      issue_from: "Issue from"
+      issue_to: "Issue to"

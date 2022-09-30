@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EZCollect</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>EZCollect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="/media/logo.png">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-    <!--Materialize Lib-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Materialize Lib-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-    <%= javascript_importmap_tags %>
-    <script src="<%= javascript_path "lib/requirejs/require.js" %>"></script>
-    <script src="<%= javascript_path "lib/requirejs/requirejs-config.js" %>"></script>
+  <%= javascript_importmap_tags %>
 
-    <!--Materialize Lib-->
-    <script src="<%= javascript_path "lib/materialize/materialize.min.js" %>"></script>
+  <%= render 'partials/head/javascript' %>
 
-  </head>
+</head>
 
-  <body>
-    <div class="header">
+<body>
+<div class="header">
+  <div class="container">
+    <%= render 'partials/logo' %>
+    <%= render 'partials/navigation' %>
+  </div>
+</div>
+<div class="sub-header">
 
-    </div>
-    <div class="sub-header">
+</div>
 
-    </div>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+<div class="container">
+  <%= render 'partials/message' %>
+  <div class="main-page-wrapper">
+    <%= yield %>
+  </div>
+</div>
+<%= render 'partials/footer' %>
+</body>
 </html>

@@ -7,14 +7,14 @@ class RegisterController < ApplicationController
   end
 
   def create
-    register(user_params)
-    redirect_to '/', notice: 'Register OK'
+    register(handle_params)
+    redirect_to '/', success: t('register_success_message')
   end
 
   private
-  def user_params
+  def handle_params
     # strong parameters
-    params.require(:user).permit(:username, :name, :email, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
 
 end

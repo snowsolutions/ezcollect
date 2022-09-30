@@ -1,0 +1,1 @@
+Dir["#{Rails.root}/app/helpers/option/*.rb"].each { |file| require file }

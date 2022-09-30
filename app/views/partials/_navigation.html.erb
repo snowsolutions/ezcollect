@@ -1,0 +1,47 @@
+<div class="navigation-wrapper">
+  <div id="navigation">
+    <%
+      navItems = [
+        {
+          "url" => '/dashboard',
+          "icon" => '',
+          "title" => t('dashboard')
+        },
+        {
+          "url" => '/job',
+          "icon" => '',
+          "title" => t('jobs')
+        },
+        {
+          "url" => '/candidate',
+          "icon" => '',
+          "title" => t('candidate')
+        },
+        {
+          "url" => '/account',
+          "icon" => '',
+          "title" => t('account')
+        },
+        {
+          "url" => '/setting',
+          "icon" => '',
+          "title" => t('settings')
+        }
+      ]
+    %>
+    <% if session[:user_id] %>
+      <% for item in navItems do %>
+        <div class="nav-item">
+          <a href="
+              <%= item['url'] %>">
+              <span>
+                <i class="
+                  <%= item['icon'] %>"></i>
+                <%= item['title'] %>
+              </span>
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

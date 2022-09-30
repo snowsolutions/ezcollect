@@ -1,0 +1,40 @@
+vn:
+  401_notice: "Please login to view this content"
+  401_message: "You're not authorized to view this content"
+  login_message: "Logged in successfully"
+  login_invalid_message: "Email or Password is incorrect. Please check and try again!"
+  logout_message: "Logged out successfully"
+  register_success_message: "Congratulations! Your account has been registered successfully"
+  #General fields text
+  created_at: "Created at"
+  updated_at: "Updated at"
+  #General action text
+  create: "Create"
+  change: "Change"
+  adjust: "Adjust"
+  delete: "Delete"
+  remove: "Remove"
+  edit: "Edit"
+  view: "View detail"
+  #Candidate text
+  candidate_listing: "Candidate listing"
+  create_new_candidate: "Create new candidate"
+  #Job text
+  job:
+    action:
+      listing: "Job listing"
+      create: "Create new job"
+    field:
+      title: "Title"
+      status: "Status"
+      description: "Description"
+      must_have_req: "Must have"
+      nice_to_have_req: "Nice to have"
+      benefit: "Benefit"
+      location: "Location"
+      salary_type: "Salary Type"
+      salary: "Salary"
+      user_id: "Create by"
+      quantity: "Quantity"
+      issue_from: "Issue from"
+      issue_to: "Issue to"
