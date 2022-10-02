@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="container-header">
+    <div class="page-title">
+      <h1><%= @page_title %></h1>
+    </div>
+    <div class="form-action action-bar top-bar">
+      <a href="<%= candidate_url %>" class="btn btn-secondary"><%= t('back') %></a>
+      <button class="btn form-submit"><%= t('submit') %></button>
+    </div>
+  </div>
+  <%= form_with url: candidate_add_url, method: :post, id: "candidate-create-form", multipart: true do |form| %>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('general') %></h2>
+      </div>
+      <div class="col s12">
+        <label for="resume"><%= t('candidate.field.resume') %></label>
+        <input type="file" id="resume" name="candidate[resume]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="name"><%= t('candidate.field.name') %></label>
+        <input type="text" id="name" name="candidate[name]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="dob"><%= t('candidate.field.dob') %></label>
+        <input type="text" id="dob" name="candidate[dob]" class="validate datepicker">
+      </div>
+      <div class="col s6">
+        <label for="email"><%= t('candidate.field.email') %></label>
+        <input type="text" id="email" name="candidate[email]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="telephone"><%= t('candidate.field.telephone') %></label>
+        <input type="text" id="telephone" name="candidate[telephone]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="experience"><%= t('candidate.field.experience') %></label>
+        <input type="text" id="experience" name="candidate[experience]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="level"><%= t('candidate.field.level') %></label>
+        <select id="level" name="candidate[level]" class="select-dropdown">
+          <option value="" disabled selected><%= t('choose_one') %></option>
+          <% for option in CandidateLevelOption.to_option %>
+            <option value="<%= option['value'] %>"><%= option['label'] %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col s6">
+        <label for="sources_id"><%= t('candidate.field.sources') %></label>
+        <select id="sources_id" name="candidate[sources_id]" class="select-dropdown">
+          <option value="" disabled selected><%= t('choose_one') %></option>
+          <% for option in CandidateSourceOption.to_option %>
+            <option value="<%= option['value'] %>"><%= option['label'] %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-action action-bar bottom-bar">
+    <button class="btn form-submit"><%= t('submit') %></button>
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">
+    require(['jquery', 'form/util', 'filepond', 'filepond/pdf-review', 'filepond/type-validate'], function ($, form, FilePond, FilePondPdfReviewPlugin, FilePondTypeValidatePlugin) {
+        $(document).ready(function () {
+            /**
+             * Register file pond pdf review plugin
+             */
+            FilePond.registerPlugin(FilePondPdfReviewPlugin)
+            FilePond.registerPlugin(FilePondTypeValidatePlugin)
+            const fileInputSelectors = ['#resume']
+            for (let index in fileInputSelectors) {
+                let input = document.querySelector(fileInputSelectors[index])
+                // Create the FilePond instance
+                /**
+                 * Init file pond
+                 * @type {input}
+                 */
+                const pond = FilePond.create(input, {
+                    storeAsFile: true,
+                    allowMultiple: false,
+                    allowReorder: false,
+                    labelIdle: "<span class='filepond-upload-hint'>Drag & Drop your files or <span class='filepond--label-action'>Browse</span></span>",
+                    acceptedFileTypes: ['application/pdf'],
+                    maxFiles: 1
+                });
+            }
+            form.init('#candidate-create-form')
+        })
+
+    })
+</script>

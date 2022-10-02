@@ -4,20 +4,18 @@
       <h1><%= @page_title %></h1>
     </div>
     <div class="action-bar">
-      <a href="/job/add" class="btn btn-primary"><%= t('job.action.create') %></a>
+      <a href="<%= job_add_url %>" class="btn btn-primary"><%= t('job.action.create') %></a>
     </div>
   </div>
   <div class="col s12 grid-table">
-    <table id="example" class="display" style="width:100%">
+    <table id="main-form" class="display" style="width:100%">
       <thead>
       <tr>
         <th><%= t('job.field.title') %></th>
         <th><%= t('created_at') %></th>
         <th><%= t('job.field.status') %></th>
-        <th><%= t('job.field.salary_type') %></th>
-        <th><%= t('job.field.salary') %></th>
-        <th><%= t('job.field.quantity') %></th>
-        <th><%= t('job.field.yoe') %></th>
+        <th><%= t('job.field.employment_type') %></th>
+        <th><%= t('job.field.work_mode') %></th>
         <th></th>
       </tr>
       </thead>
@@ -29,7 +27,7 @@
             <div class="main-content strong-content"><%= item.title %></div>
             <div class="sub-content">
               <i class="tiny material-icons">location_on</i>
-              <%= item.location %>
+              <%= item.location_country %>
             </div>
           </td>
           <td class="cell">
@@ -39,20 +37,14 @@
             <%= JobStatusOption.to_label item.status %>
           </td>
           <td class="cell">
-            <%= JobSalaryTypeOption.to_label item.salary_type %>
+            <%= JobEmploymentTypeOption.to_label item.employment_type %>
           </td>
           <td class="cell">
-            <%= CurrencyHelper.format_currency(item.salary.to_s) %>
-          </td>
-          <td class="cell">
-            <%= item.quantity %>
-          </td>
-          <td class="cell">
-            <%= item.yoe %>
+            <%= JobWorkModeOption.to_label item.work_mode %>
           </td>
           <td class="cell">
             <div class="row-action-bar">
-              <a class="btn" href="<%= job_view_url(id: item.id) %>"><%= t('edit') %></a>
+              <a class="btn" href="<%= job_edit_url(id: item.id) %>"><%= t('edit') %></a>
             </div>
           </td>
         </tr>
@@ -65,7 +57,7 @@
 <script type="text/javascript" charset="utf-8">
     require(['jquery', 'dataTable'], function ($) {
         $(document).ready(function () {
-            $('#example').DataTable({
+            $('#main-form').DataTable({
                 "searching": false
             });
         });

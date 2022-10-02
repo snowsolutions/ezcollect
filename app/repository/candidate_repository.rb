@@ -1,13 +1,13 @@
-module JobRepository
-  include JobInterface
+module CandidateRepository
+  include CandidateInterface
 
   def get(id)
-    Job.find_by(id: id)
+    Candidate.find_by(id: id)
   end
 
   def create(data)
     data[:users_id] = session[:user_id]
-    model = Job.new(data)
+    model = Candidate.new(data)
     save(model)
   end
 

@@ -1,3 +1,3 @@
-module JobInterface
+module CandidateInterface
   include BaseInterface
 end

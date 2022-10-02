@@ -1,2 +1,77 @@
-<h1>Candidate#index</h1>
-<p>Find me in app/views/candidate/index.html.erb</p>
+<div class="row">
+  <div class="container-header">
+    <div class="page-title">
+      <h1><%= @page_title %></h1>
+    </div>
+    <div class="action-bar">
+      <a href="/candidate/add" class="btn btn-primary"><%= t('candidate.action.create') %></a>
+    </div>
+  </div>
+  <div class="col s12 grid-table">
+    <table id="main-form" class="display" style="width:100%">
+      <thead>
+      <tr>
+        <th><%= t('candidate.field.name') %></th>
+        <th><%= t('candidate.field.email') %></th>
+        <th><%= t('candidate.field.telephone') %></th>
+        <th><%= t('candidate.field.experience') %></th>
+        <th><%= t('candidate.field.level') %></th>
+        <th><%= t('candidate.field.resume') %></th>
+        <th><%= t('candidate.field.users') %></th>
+        <th><%= t('candidate.field.sources') %></th>
+        <th><%= t('created_at') %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% for item in @collection %>
+        <tr>
+          <td class="cell">
+            <div class="main-content strong-content"><%= item.name %></div>
+          </td>
+          <td class="cell">
+            <div><%= item.email %></div>
+          </td>
+          <td class="cell">
+            <div><%= item.telephone %></div>
+          </td>
+          <td class="cell">
+            <div><%= item.experience %></div>
+          </td>
+          <td class="cell">
+            <div><%= CandidateLevelOption.to_label item.level %></div>
+          </td>
+          <td class="cell">
+            <div><%= item.resume.filename %></div>
+          </td>
+          <td class="cell">
+            <div><%= CandidateUserOption.to_label item.users_id %></div>
+          </td>
+          <td class="cell">
+            <div><%= CandidateSourceOption.to_label item.sources_id %></div>
+          </td>
+          <td class="cell">
+            <div><%= item.created_at.to_fs(:date) %></div>
+          </td>
+          <td class="cell">
+            <div class="row-action-bar">
+              <a class="btn" href="<%= candidate_edit_url(id: item.id) %>"><%= t('edit') %></a>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">
+    require(['jquery', 'dataTable'], function ($) {
+        $(document).ready(function () {
+            $('#main-form').DataTable({
+                "searching": false
+            });
+        });
+    })
+</script>

@@ -23,6 +23,22 @@
           <label for="yoe"><%= t('job.field.yoe') %></label>
           <input type="text" id="yoe" name="job[yoe]" class="validate" value="<%= @model.yoe %>">
         </div>
+        <div class="col s6">
+          <label for="employment_type"><%= t('job.field.employment_type') %></label>
+          <select name="job[employment_type]" id="employment_type">
+            <% for option in JobEmploymentTypeOption.to_option %>
+              <option <%= if @model.employment_type == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col s6">
+          <label for="work_mode"><%= t('job.field.work_mode') %></label>
+          <select name="job[work_mode]" id="work_mode">
+            <% for option in JobWorkModeOption.to_option %>
+              <option <%= if @model.work_mode == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
       </div>
     </div>
     <div class="field-group col s12">
@@ -54,16 +70,24 @@
       </div>
       <div class="">
         <div class="col s6">
-          <label for="salary_type"><%= t('job.field.salary_type') %></label>
-          <select name="job[salary_type]" id="salary_type">
-            <% for option in JobSalaryTypeOption.to_option %>
-              <option <%= if @model.salary_type == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
+          <label for="salary_currency"><%= t('job.field.salary_currency') %></label>
+          <select name="job[salary_currency]" id="salary_currency">
+            <% for option in SystemSupportCurrencyOption.to_option %>
+              <option <%= if @model.salary_currency == option['value'] then "selected" end %> value="<%= option['value'] %>"><%= option['label'] %></option>
             <% end %>
           </select>
         </div>
         <div class="col s6">
-          <label for="salary"><%= t('job.field.salary') %></label>
-          <input type="text" id="salary" name="job[salary]" class="validate" value="<%= @model.salary %>">
+          <label for="internal_salary_from"><%= t('job.field.internal_salary_from') %></label>
+          <input type="text" id="internal_salary_from" name="job[internal_salary_from]" class="validate" value="<%= @model.internal_salary_from %>">
+        </div>
+        <div class="col s6">
+          <label for="internal_salary_to"><%= t('job.field.internal_salary_to') %></label>
+          <input type="text" id="internal_salary_to" name="job[internal_salary_to]" class="validate" value="<%= @model.internal_salary_to %>">
+        </div>
+        <div class="col s6">
+          <label for="public_salary"><%= t('job.field.public_salary') %></label>
+          <input type="text" id="public_salary" name="job[public_salary]" class="validate" value="<%= @model.public_salary %>">
         </div>
       </div>
     </div>
@@ -72,9 +96,21 @@
         <h2><%= t('Geo information') %></h2>
       </div>
       <div class="">
-        <div class="col s12">
-          <label for="location"><%= t('job.field.location') %></label>
-          <input type="text" id="location" name="job[location]" class="validate" value="<%= @model.location %>">
+        <div class="col s6">
+          <label for="location_country"><%= t('address_country') %></label>
+          <input type="text" id="location_country" name="job[location_country]" class="validate" value="<%= @model.location_country %>">
+        </div>
+        <div class="col s6">
+          <label for="location_state"><%= t('address_city') %></label>
+          <input type="text" id="location_state" name="job[location_state]" class="validate" value="<%= @model.location_state %>">
+        </div>
+        <div class="col s6">
+          <label for="location_city"><%= t('address_state') %></label>
+          <input type="text" id="location_city" name="job[location_city]" class="validate" value="<%= @model.location_city %>">
+        </div>
+        <div class="col s6">
+          <label for="location_street"><%= t('address_street') %></label>
+          <input type="text" id="location_street" name="job[location_street]" class="validate" value="<%= @model.location_street %>">
         </div>
       </div>
     </div>

@@ -7,11 +7,6 @@ class JobController < ApplicationController
     @collection = Job.all
   end
 
-  def view
-    @page_title = t('job.action.view')
-    @model = Job.find_by(id: params[:id])
-  end
-
   def add
     @page_title = t('job.action.create')
   end
@@ -29,11 +24,16 @@ class JobController < ApplicationController
   end
 
   def edit
+    @page_title = t('job.action.view')
+    @model = Job.find_by(id: params[:id])
+  end
+
+  def edit_post
     post_data = handle_params(params)
     if update(post_data)
-      redirect_to job_view_url(id: post_data['id']), success: t('_job') + t('action.update_success')
+      redirect_to job_edit_url(id: post_data['id']), success: t('_job') + t('action.update_success')
     else
-      redirect_to job_view_url(id: post_data['id']), error: t('_job') + t('action.update_fail')
+      redirect_to job_edit_url(id: post_data['id']), error: t('_job') + t('action.update_fail')
     end
   end
 
@@ -41,7 +41,7 @@ class JobController < ApplicationController
     if destroy(params[:id])
       redirect_to job_url, success: t('_job') + t('action.delete_success')
     else
-      redirect_to job_view_url(id: post_data['id']), error: t('_job') + t('action.delete_fail')
+      redirect_to job_edit_url(id: post_data['id']), error: t('_job') + t('action.delete_fail')
     end
   end
 
@@ -50,4 +50,5 @@ class JobController < ApplicationController
   def handle_params(params)
     params.require(:job).permit!
   end
+
 end

@@ -4,11 +4,11 @@
       <h1><%= @page_title %></h1>
     </div>
     <div class="form-action action-bar top-bar">
-      <a href="/job" class="btn btn-secondary"><%= t('back') %></a>
+      <a href="<%= job_url %>" class="btn btn-secondary"><%= t('back') %></a>
       <button class="btn form-submit"><%= t('submit') %></button>
     </div>
   </div>
-  <%= form_with url: "/job/add", method: :post, id: "job-create-form" do |form| %>
+  <%= form_with url: job_add_url, method: :post, id: "job-create-form" do |form| %>
     <div class="field-group col s12">
       <div class="group-title">
         <h2><%= t('General') %></h2>
@@ -21,6 +21,24 @@
         <div class="col s6">
           <label for="yoe"><%= t('job.field.yoe') %></label>
           <input type="text" id="yoe" name="job[yoe]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="employment_type"><%= t('job.field.employment_type') %></label>
+          <select id="employment_type" name="job[employment_type]" class="select-dropdown">
+            <option value="" disabled selected><%= t('choose_one') %></option>
+            <% for option in JobEmploymentTypeOption.to_option %>
+              <option value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col s6">
+          <label for="work_mode"><%= t('job.field.work_mode') %></label>
+          <select id="work_mode" name="job[work_mode]" class="select-dropdown">
+            <option value="" disabled selected><%= t('choose_one') %></option>
+            <% for option in JobWorkModeOption.to_option %>
+              <option value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
         </div>
       </div>
     </div>
@@ -52,18 +70,26 @@
         <h2><%= t('Salary') %></h2>
       </div>
       <div class="">
-        <div class="col s6">
-          <label for="salary_type"><%= t('job.field.salary_type') %></label>
-          <select id="salary_type" name="job[salary_type]" class="select-dropdown">
+        <div class="col xl3 l3 m6 s12">
+          <label for="salary_currency"><%= t('job.field.salary_currency') %></label>
+          <select id="salary_currency" name="job[salary_currency]" class="select-dropdown">
             <option value="" disabled selected><%= t('choose_one') %></option>
-            <% for option in JobSalaryTypeOption.to_option %>
+            <% for option in SystemSupportCurrencyOption.to_option %>
               <option value="<%= option['value'] %>"><%= option['label'] %></option>
             <% end %>
           </select>
         </div>
-        <div class="col s6">
-          <label for="salary"><%= t('job.field.salary') %></label>
-          <input type="text" id="salary" name="job[salary]" class="validate">
+        <div class="col xl3 l3 m6 s12">
+          <label for="internal_salary_from"><%= t('job.field.internal_salary_from') %></label>
+          <input type="text" id="internal_salary_from" name="job[internal_salary_from]" class="validate">
+        </div>
+        <div class="col xl3 l3 m6 s12">
+          <label for="internal_salary_to"><%= t('job.field.internal_salary_to') %></label>
+          <input type="text" id="internal_salary_to" name="job[internal_salary_to]" class="validate">
+        </div>
+        <div class="col xl3 l3 m6 s12">
+          <label for="public_salary"><%= t('job.field.public_salary') %></label>
+          <input type="text" id="public_salary" name="job[public_salary]" class="validate">
         </div>
       </div>
     </div>
@@ -72,9 +98,21 @@
         <h2><%= t('Geo information') %></h2>
       </div>
       <div class="">
-        <div class="col s12">
-          <label for="location"><%= t('job.field.location') %></label>
-          <input type="text" id="location" name="job[location]" class="validate">
+        <div class="col s6">
+          <label for="location_country"><%= t('address_country') %></label>
+          <input type="text" id="location_country" name="job[location_country]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="location_state"><%= t('address_state') %></label>
+          <input type="text" id="location_state" name="job[location_state]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="location_city"><%= t('address_city') %></label>
+          <input type="text" id="location_city" name="job[location_city]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="location_street"><%= t('address_street') %></label>
+          <input type="text" id="location_street" name="job[location_street]" class="validate">
         </div>
       </div>
     </div>
@@ -95,7 +133,7 @@
     </div>
     <div class="field-group col s12">
       <div class="group-title">
-        <h2><%= t('Additional') %></h2>
+        <h2><%= t('additional') %></h2>
       </div>
       <div class="">
         <div class="col s6">
@@ -116,6 +154,7 @@
     </div>
   <% end %>
   <div class="form-action action-bar bottom-bar">
+    <a href="/job" class="btn btn-secondary"><%= t('back') %></a>
     <button class="btn form-submit"><%= t('submit') %></button>
   </div>
 </div>
