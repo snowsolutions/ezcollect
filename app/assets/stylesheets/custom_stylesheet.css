@@ -7,6 +7,7 @@
     --active-secondary-color: #657785;
     --danger-color: #e7453f;
     --white: #ffffff;
+    --grey: #626262;
     --active-white: #cccccc;
     --active-danger-color: #ce3e38;
     --border-radius: 3px;
@@ -45,6 +46,57 @@ Core override
 .btn-danger:focus, .btn-danger:hover, .btn-danger:active {
     background-color: var(--active-danger-color) !important;
 }
+
+.group-btn {
+    height: 30px;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid #d0d0d0;
+    background-color: var(--main-color);
+    margin: 10px 1px !important;
+    padding: 10px 15px;
+    color: var(--white);
+    box-sizing: border-box;
+}
+.group-btn:first-child {
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+.group-btn:last-child {
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+.group-btn:hover, .group-btn:active, .group-btn:focus {
+    text-decoration: none;
+    color: var(--active-white);
+    background-color: var(--active-main-color);
+}
+
+.small-btn {
+    height: 30px;
+    border-radius: var(--border-radius) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid #d0d0d0;
+    background-color: var(--main-color);
+    margin: 5px 1px !important;
+    padding: 5px 10px;
+    color: var(--white);
+    box-sizing: border-box;
+    display: inline-block;
+}
+.small-btn:hover, .small-btn:focus, .small-btn:active {
+    cursor: pointer;
+}
+.small-btn i {
+    font-size: 15px !important;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    margin: 0;
+}
+
 /**
 Page message
  */
@@ -302,6 +354,20 @@ label {
 .form-action {
 
 }
+
+.floating-action-bar {
+
+}
+.floating-action-bar.float-left {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+}
+.floating-action-bar.float-right {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}
 .action-bar {
     float: right;
     display: inline-block;
@@ -344,4 +410,31 @@ Table CSS
 }
 table.dataTable {
     margin-bottom: 20px !important;
+}
+/**
+Custom Boxes
+ */
+.box {
+    min-height: 50px;
+    margin: 0 20px;
+    display: inline-block;
+    box-sizing: content-box;
+    width: calc(100% - 40px);
+    padding: 20px 0;
+}
+.box.t-border-box {
+    border-top: 1px solid #d7d7d7;
+}
+.box.b-border-box {
+    border-bottom: 1px solid #d7d7d7;
+}
+
+/**
+Icons
+ */
+.copy-icon {
+    color: #9a9a9a;
+}
+.copy-icon:hover {
+    cursor: pointer;
 }

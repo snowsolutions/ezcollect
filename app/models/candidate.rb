@@ -1,5 +1,5 @@
 class Candidate < ApplicationRecord
-  validates :name, presence: true
+  validates :first_name, :last_name, :email, presence: true
 
   has_one_attached :resume
 end

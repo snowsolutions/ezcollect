@@ -38,6 +38,10 @@ class CandidateController < ApplicationController
     # pdf.
   end
 
+  def detail
+    @model = get(params[:id])
+  end
+
   def handle_params(params)
     params.require(:candidate).permit!
   end

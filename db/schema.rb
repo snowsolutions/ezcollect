@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_01_172141) do
     t.string "experience"
     t.integer "level"
     t.integer "desire_salary"
-    t.integer "earliest_start_date"
+    t.datetime "earliest_start_date"
     t.string "salary_mode"
     t.string "address_street"
     t.string "address_country"

@@ -8,19 +8,15 @@
     </div>
   </div>
   <div class="col s12 grid-table">
-    <table id="main-form" class="display" style="width:100%">
+    <table id="main-table" class="display" style="width:100%">
       <thead>
       <tr>
         <th><%= t('candidate.field.name') %></th>
-        <th><%= t('candidate.field.email') %></th>
-        <th><%= t('candidate.field.telephone') %></th>
-        <th><%= t('candidate.field.experience') %></th>
-        <th><%= t('candidate.field.level') %></th>
+        <th><%= t('contact') %></th>
         <th><%= t('candidate.field.resume') %></th>
-        <th><%= t('candidate.field.users') %></th>
         <th><%= t('candidate.field.sources') %></th>
         <th><%= t('created_at') %></th>
-        <th></th>
+        <th><%= t('actions') %></th>
       </tr>
       </thead>
       <tbody>
@@ -28,25 +24,14 @@
       <% for item in @collection %>
         <tr>
           <td class="cell">
-            <div class="main-content strong-content"><%= item.name %></div>
+            <div class="main-content strong-content"><%= "#{item.first_name} #{item.last_name}" %></div>
           </td>
           <td class="cell">
             <div><%= item.email %></div>
-          </td>
-          <td class="cell">
             <div><%= item.telephone %></div>
           </td>
           <td class="cell">
-            <div><%= item.experience %></div>
-          </td>
-          <td class="cell">
-            <div><%= CandidateLevelOption.to_label item.level %></div>
-          </td>
-          <td class="cell">
-            <div><%= item.resume.filename %></div>
-          </td>
-          <td class="cell">
-            <div><%= CandidateUserOption.to_label item.users_id %></div>
+            <div><a href="<%= item.resume.url %>">View Resume</a></div>
           </td>
           <td class="cell">
             <div><%= CandidateSourceOption.to_label item.sources_id %></div>
@@ -56,6 +41,7 @@
           </td>
           <td class="cell">
             <div class="row-action-bar">
+              <a class="btn" href="<%= candidate_detail_url(id: item.id) %>"><%= t('view') %></a>
               <a class="btn" href="<%= candidate_edit_url(id: item.id) %>"><%= t('edit') %></a>
             </div>
           </td>
@@ -67,11 +53,9 @@
   </div>
 </div>
 <script type="text/javascript" charset="utf-8">
-    require(['jquery', 'dataTable'], function ($) {
+    require(['jquery', 'table/util'], function ($, tableUtil) {
         $(document).ready(function () {
-            $('#main-form').DataTable({
-                "searching": false
-            });
+            tableUtil.init($('#main-table'))
         });
     })
 </script>

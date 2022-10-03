@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="box b-border-box candidate-personal">
+    <div class="candidate-name"><%= "#{@model.first_name} #{@model.last_name}" %></div>
+    <div class="candidate-created-at"><%= t('applied_on') %> <%= @model.created_at.to_fs(:date) %></div>
+    <div class="candidate-contact">
+      <span class="contact-item location">
+        <i class="tiny material-icons head-icon">location_on</i></a>
+        <%= "#{@model.address_country}, #{@model.address_state}" %>
+      </span>
+      <span class="contact-item telephone">
+        <i class="tiny material-icons head-icon">local_phone</i></a>
+        <a href="tel:<%= @model.telephone %>"><%= @model.telephone %></a>
+        <span class="copy-btn" data="<%= @model.telephone %>">
+          <i class="tiny material-icons copy-icon">content_copy</i>
+        </span>
+      </span>
+      <span class="contact-item email">
+        <i class="tiny material-icons head-icon">email</i></a>
+        <a href="tel:<%= @model.email %>"><%= @model.email %></a>
+        <span class="copy-btn" data="<%= @model.email %>">
+          <i class="tiny material-icons copy-icon">content_copy</i>
+        </span>
+      </span>
+    </div>
+    <div class="floating-action-bar float-right">
+      <span class="small-btn btn-secondary">
+        <i class="tiny material-icons head-icon">email</i></a>
+      </span>
+      <span class="small-btn btn-secondary">
+        <i class="tiny material-icons head-icon">local_phone</i></a>
+      </span>
+    </div>
+  </div>
+  <div class="box b-border-box candidate-application">
+    <div class="candidate-job-apply-for">
+      <a href="<%= job_edit_url(id: @model.jobs_id) %>"><%= CandidateJobOption.to_label @model.jobs_id %>
+        <i class="tiny material-icons">call_made</i></a>
+    </div>
+    <div class="candidate-location">
+      <div class="location-box">
+        <span class="contact-item">
+          <i class="tiny material-icons">location_on</i>
+          <%= "#{@model.address_country}, #{@model.address_state}" %>
+        </span>
+      </div>
+      <div class="action-bar">
+        <a class="group-btn btn-danger" href="#"><%= t('reject') %></a>
+        <a class="group-btn btn-secondary" href="#"><%= t('add_to_job') %></a>
+        <a class="group-btn btn-primary" href="#"><%= t('advance') %><i class="tiny material-icons">arrow_forward</i></a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div id="resume-view-wrapper">
+      <iframe src="" id="resume-iframe-view" frameBorder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $("#resume-iframe-view").attr("src", '<%= @model.resume.url %>');
+        })
+    })
+</script>

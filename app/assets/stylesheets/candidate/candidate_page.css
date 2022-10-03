@@ -1,0 +1,67 @@
+.candidate-personal {
+    position: relative;
+}
+
+.candidate-location {
+
+}
+
+.candidate-name {
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.candidate-created-at {
+    color: var(--grey);
+}
+
+.candidate-contact {
+
+}
+
+.contact-item:first-child {
+    margin: 5px 5px 5px 0;
+}
+
+.contact-item {
+    margin: 5px;
+    display: inline-block;
+    color: var(--grey);
+}
+
+.contact-item a {
+    color: var(--grey);
+}
+
+.contact-item > i {
+    position: relative;
+    top: 2px;
+    color: var(--grey);
+}
+
+.contact-item .copy-icon {
+    position: relative;
+    top: 2px;
+}
+
+.candidate-job-apply-for a {
+    color: var(--main-color);
+    line-height: 20px;
+}
+
+.candidate-job-apply-for a i {
+    position: relative;
+    top: 3px;
+}
+
+#resume-view-wrapper {
+    margin: 20px;
+    width: calc(100% - 40px);
+    display: inline-block;
+}
+
+#resume-iframe-view {
+    width: 100%;
+    height: 600px;
+}

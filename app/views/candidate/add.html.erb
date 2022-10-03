@@ -11,15 +11,42 @@
   <%= form_with url: candidate_add_url, method: :post, id: "candidate-create-form", multipart: true do |form| %>
     <div class="field-group col s12">
       <div class="group-title">
-        <h2><%= t('general') %></h2>
+        <h2><%= t('Applying') %></h2>
+      </div>
+      <div class="col s12">
+        <label for="jobs_id"><%= t('candidate.field.jobs') %></label>
+        <select id="jobs_id" name="candidate[jobs_id]" class="select-dropdown">
+          <option value="" disabled selected><%= t('no_particular') %></option>
+          <% for option in CandidateJobOption.to_option %>
+            <option value="<%= option['value'] %>"><%= option['label'] %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('personal') %></h2>
       </div>
       <div class="col s12">
         <label for="resume"><%= t('candidate.field.resume') %></label>
         <input type="file" id="resume" name="candidate[resume]" class="validate">
       </div>
       <div class="col s6">
-        <label for="name"><%= t('candidate.field.name') %></label>
-        <input type="text" id="name" name="candidate[name]" class="validate">
+        <label for="first_name"><%= t('candidate.field.first_name') %></label>
+        <input type="text" id="first_name" name="candidate[first_name]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="last_name"><%= t('candidate.field.last_name') %></label>
+        <input type="text" id="last_name" name="candidate[last_name]" class="validate">
+      </div>
+      <div class="col s6">
+        <label for="dob"><%= t('candidate.field.gender') %></label>
+        <select id="gender" name="candidate[gender]" class="select-dropdown">
+          <option value="" disabled selected><%= t('choose_one') %></option>
+          <% for option in CandidateGenderOption.to_option %>
+            <option value="<%= option['value'] %>"><%= option['label'] %></option>
+          <% end %>
+        </select>
       </div>
       <div class="col s6">
         <label for="dob"><%= t('candidate.field.dob') %></label>
@@ -34,17 +61,8 @@
         <input type="text" id="telephone" name="candidate[telephone]" class="validate">
       </div>
       <div class="col s6">
-        <label for="experience"><%= t('candidate.field.experience') %></label>
-        <input type="text" id="experience" name="candidate[experience]" class="validate">
-      </div>
-      <div class="col s6">
-        <label for="level"><%= t('candidate.field.level') %></label>
-        <select id="level" name="candidate[level]" class="select-dropdown">
-          <option value="" disabled selected><%= t('choose_one') %></option>
-          <% for option in CandidateLevelOption.to_option %>
-            <option value="<%= option['value'] %>"><%= option['label'] %></option>
-          <% end %>
-        </select>
+        <label for="earliest_start_date"><%= t('candidate.field.earliest_start_date') %></label>
+        <input type="text" id="earliest_start_date" name="candidate[earliest_start_date]" class="validate datepicker">
       </div>
       <div class="col s6">
         <label for="sources_id"><%= t('candidate.field.sources') %></label>
@@ -54,6 +72,88 @@
             <option value="<%= option['value'] %>"><%= option['label'] %></option>
           <% end %>
         </select>
+      </div>
+      <div class="field-group col s12">
+        <div class="group-title">
+          <h2><%= t('Salary') %></h2>
+        </div>
+        <div class="col s6">
+          <label for="desire_salary"><%= t('candidate.field.desire_salary') %></label>
+          <input type="number" id="desire_salary" name="candidate[desire_salary]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="salary_mode"><%= t('candidate.field.salary_mode') %></label>
+          <select id="salary_mode" name="candidate[salary_mode]" class="select-dropdown">
+            <option value="" disabled selected><%= t('choose_one') %></option>
+            <% for option in CandidateSalaryModeOption.to_option %>
+              <option value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="field-group col s12">
+        <div class="group-title">
+          <h2><%= t('Experience') %></h2>
+        </div>
+        <div class="col s6">
+          <label for="experience"><%= t('candidate.field.experience') %></label>
+          <input type="text" id="experience" name="candidate[experience]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="level"><%= t('candidate.field.level') %></label>
+          <select id="level" name="candidate[level]" class="select-dropdown">
+            <option value="" disabled selected><%= t('choose_one') %></option>
+            <% for option in CandidateLevelOption.to_option %>
+              <option value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="field-group col s12">
+        <div class="group-title">
+          <h2><%= t('Geo information') %></h2>
+        </div>
+        <div class="">
+          <div class="col s6">
+            <label for="address_country"><%= t('address_country') %></label>
+            <input type="text" id="address_country" name="candidate[address_country]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="address_state"><%= t('address_state') %></label>
+            <input type="text" id="address_state" name="candidate[address_state]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="address_city"><%= t('address_city') %></label>
+            <input type="text" id="address_city" name="candidate[address_city]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="address_street"><%= t('address_street') %></label>
+            <input type="text" id="address_street" name="candidate[address_street]" class="validate">
+          </div>
+        </div>
+      </div>
+      <div class="field-group col s12">
+        <div class="group-title">
+          <h2><%= t('Social information') %></h2>
+        </div>
+        <div class="">
+          <div class="col s6">
+            <label for="social_facebook_profile"><%= t('candidate.field.social_facebook_profile') %></label>
+            <input type="text" id="social_facebook_profile" name="candidate[social_facebook_profile]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="social_linkedin_profile"><%= t('candidate.field.social_linkedin_profile') %></label>
+            <input type="text" id="social_linkedin_profile" name="candidate[social_linkedin_profile]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="social_twitter_profile"><%= t('candidate.field.social_twitter_profile') %></label>
+            <input type="text" id="social_twitter_profile" name="candidate[social_twitter_profile]" class="validate">
+          </div>
+          <div class="col s6">
+            <label for="social_website"><%= t('candidate.field.social_website') %></label>
+            <input type="text" id="social_website" name="candidate[social_website]" class="validate">
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

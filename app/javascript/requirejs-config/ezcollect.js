@@ -10,5 +10,6 @@ requirejs.config({
         dataTable: 'lib/datatable/datatables.min',
         ckeditor: 'lib/ckeditor/ckeditor',
         'form/util': 'custom/form/util',
+        'table/util': 'custom/table/table-util',
     }
 });

@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   put '/candidate/delete', to: 'candidate#delete'
 
-  put '/candidate/detail', to: 'candidate#detail'
+  get '/candidate/detail', to: 'candidate#detail'
 
 
 

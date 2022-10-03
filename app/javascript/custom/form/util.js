@@ -17,8 +17,10 @@ define(['jquery', 'ckeditor', 'materialize'], function ($, ClassicEditor) {
              * Init materialize components
              */
             $('select').formSelect();
+            // $('.datepicker')
             $('.datepicker').datepicker({
-                format: "dd-mm-yyyy"
+                format: "dd-mm-yyyy",
+                yearRange: [1950,2050],
             });
 
             /**
@@ -33,8 +35,6 @@ define(['jquery', 'ckeditor', 'materialize'], function ($, ClassicEditor) {
                     });
                 console.log(el)
             })
-            console.log('ckeditorFields')
-            console.log(ckeditorFields)
         }
     }
 })
