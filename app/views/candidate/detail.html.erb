@@ -1,3 +1,23 @@
+<div class="box">
+  <div class="action-bar navigate-bar">
+    <a href="<%= if @previous then
+                   candidate_detail_url(id: @previous.id)
+                 end %>" class="btn btn-primary <%= "disabled" unless @previous %>">
+      <i class="tiny material-icons">chevron_left</i>
+      <%= "#{t('previous')} #{t('_candidate')}" %>
+    </a>
+    <a href="<%= candidate_url %>" class="btn btn-secondary">
+      <i class="tiny material-icons">dehaze</i>
+      <%= t('back') %>
+    </a>
+    <a href="<%= if @next then
+                   candidate_detail_url(id: @next.id)
+                 end %>" class="btn btn-primary <%= "disabled" unless @next %>">
+      <%= "#{t('next')} #{t('_candidate')}" %>
+      <i class="tiny material-icons">chevron_right</i>
+    </a>
+  </div>
+</div>
 <div class="card">
   <div class="box b-border-box candidate-personal">
     <div class="candidate-name"><%= "#{@model.first_name} #{@model.last_name}" %></div>
@@ -46,7 +66,8 @@
       <div class="action-bar">
         <a class="group-btn btn-danger" href="#"><%= t('reject') %></a>
         <a class="group-btn btn-secondary" href="#"><%= t('add_to_job') %></a>
-        <a class="group-btn btn-primary" href="#"><%= t('advance') %><i class="tiny material-icons">arrow_forward</i></a>
+        <a class="group-btn btn-primary" href="#"><%= t('advance') %>
+          <i class="tiny material-icons">arrow_forward</i></a>
       </div>
     </div>
   </div>

@@ -5,6 +5,14 @@ module CandidateRepository
     Candidate.find_by(id: id)
   end
 
+  def get_previous(id)
+    Candidate.where("id < ?", id).order("id desc").first
+  end
+
+  def get_next(id)
+    Candidate.where("id > ?", id).order("id asc").first
+  end
+
   def create(data)
     data[:users_id] = session[:user_id]
     model = Candidate.new(data)

@@ -7,14 +7,16 @@ class RegisterController < ApplicationController
   end
 
   def create
-    register(handle_params)
+    user = register(handle_params)
+    puts "**Registered user with email: " + user.email
+    UserMailer.new_account(user).deliver_now
     redirect_to '/', success: t('register_success_message')
   end
 
   private
   def handle_params
     # strong parameters
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

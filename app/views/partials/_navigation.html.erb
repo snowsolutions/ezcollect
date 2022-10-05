@@ -1,11 +1,11 @@
 <div class="navigation-wrapper">
   <div id="navigation">
     <%
-      navItems = [
+      nav_items = [
         {
           "url" => '/dashboard',
           "icon" => '',
-          "title" => t('dashboard')
+          "title" => 'Dashboard'
         },
         {
           "url" => '/job',
@@ -18,19 +18,24 @@
           "title" => t('_candidate')
         },
         {
-          "url" => '/account',
+          "url" => workflow_url(type: 'recruitment'),
           "icon" => '',
-          "title" => t('account')
+          "title" => t('_recruitment_workflow')
+        },
+        {
+          "url" => workflow_url,
+          "icon" => '',
+          "title" => t('_workflow')
         },
         {
           "url" => '/setting',
           "icon" => '',
-          "title" => t('settings')
+          "title" => 'Setting'
         }
       ]
     %>
     <% if session[:user_id] %>
-      <% for item in navItems do %>
+      <% for item in nav_items do %>
         <div class="nav-item">
           <a href="
               <%= item['url'] %>">

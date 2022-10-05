@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'workflow/index'
 
   # General routes
 
@@ -47,7 +47,20 @@ Rails.application.routes.draw do
 
   get '/candidate/detail', to: 'candidate#detail'
 
+  # Workflow routes
+  get '/workflow', to: 'workflow#index'
 
+  # get '/workflow?type=:type', to: 'workflow#index'
+
+  get '/workflow/add', to: 'workflow#add'
+
+  post '/workflow/add', to: 'workflow#add_post'
+
+  get '/workflow/edit', to: 'workflow#edit'
+
+  put '/workflow/update', to: 'workflow#edit_post'
+
+  put '/workflow/delete', to: 'workflow#delete'
 
   # Account routes
 

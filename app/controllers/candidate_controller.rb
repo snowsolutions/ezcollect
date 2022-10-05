@@ -40,6 +40,8 @@ class CandidateController < ApplicationController
 
   def detail
     @model = get(params[:id])
+    @next = get_next(params[:id])
+    @previous = get_previous(params[:id])
   end
 
   def handle_params(params)

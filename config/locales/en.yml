@@ -8,6 +8,9 @@ en:
   register_success_message: "Congratulations! Your account has been registered successfully"
   dont_have_an_account?: "Don't have an account?"
   register_one!: "Register one!"
+  email_content:
+    new_account:
+      subject: "Congratulations! Your account has been registered successfully"
   #General heading text
   general: "General"
   personal: "Personal"
@@ -117,3 +120,16 @@ en:
       social_linkedin_profile: "LinkedIn profile"
       social_twitter_profile: "Twitter profile"
       social_website: "Website URL"
+  _recruitment_workflow: "Recruitment Workflow"
+  _performance_review_workflow: "Performance Review Workflow"
+  _workflow: "Workflow"
+  workflow:
+    action:
+      view: "View workflow"
+      listing: "Workflow listing"
+      create: "Create new workflow"
+    field:
+      name: "Name"
+      workflow_type: "Workflow Type"
+      available_params: "Available Params"
+

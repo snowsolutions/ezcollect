@@ -1,0 +1,1 @@
+Dir["#{Rails.root}/app/model/workflow/*.rb"].each { |file| require file }

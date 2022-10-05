@@ -355,6 +355,27 @@ label {
 
 }
 
+.navigate-bar {
+
+}
+.navigate-bar i {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px !important;
+    font-size: 20px !important;
+}
+.action-bar.navigate-bar .btn {
+    height: 40px;
+    line-height: 40px;
+}
+.action-bar.navigate-bar .btn.disabled {
+    cursor: none;
+    background-color: var(--grey);
+    color: var(--white)
+}
 .floating-action-bar {
 
 }
