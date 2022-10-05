@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="container-header">
+    <div class="page-title">
+      <h1><%= @page_title %></h1>
+    </div>
+    <div class="form-action action-bar top-bar">
+      <a href="<%= job_url %>" class="btn btn-secondary"><%= t('back') %></a>
+      <button class="btn form-submit"><%= t('submit') %></button>
+    </div>
+  </div>
+  <%= form_with url: job_add_url, method: :post, id: "workflow-create-form" do |form| %>
+    <div class="field-group col s12">
+      <div class="group-title">
+        <h2><%= t('General') %></h2>
+      </div>
+      <div class="">
+        <div class="col s6">
+          <label for="name"><%= t('workflow.field.name') %></label>
+          <input type="text" id="title" name="workflow[name]" class="validate">
+        </div>
+        <div class="col s6">
+          <label for="workflow_type"><%= t('workflow.field.workflow_type') %></label>
+          <select id="workflow_type" name="workflow[workflow_type]" class="select-dropdown">
+            <option value="" disabled selected><%= t('choose_one') %></option>
+            <% for option in WorkflowTypeOption.to_option %>
+              <option value="<%= option['value'] %>"><%= option['label'] %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col s12">
+          <label for="available_params"><%= t('workflow.field.available_params') %></label>
+          <input type="text" id="available_params" name="workflow[available_params]" class="validate">
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript" charset="utf-8">
+  require(['jquery', 'form/util'], function ($, form) {
+    form.init('#workflow-create-form')
+  })
+</script>
