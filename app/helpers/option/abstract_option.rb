@@ -58,7 +58,7 @@ module AbstractOption
   public
 
   def to_label(key)
-    puts "Calling to_label()"
+    puts "Calling to_label() key #{@hash_key}"
     unless @@hash_cache.key?(@hash_key)
       if @is_collection
         handle_collection_to_option

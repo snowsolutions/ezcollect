@@ -119,7 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_141345) do
 
   create_table "workflow_stage_actions", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "action_type"
     t.text "action_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,13 +127,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_141345) do
 
   create_table "workflow_stages", force: :cascade do |t|
     t.string "name"
+    t.string "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "workflows", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "workflow_type"
     t.text "available_params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,6 +8,7 @@
   --danger-color: #e7453f;
   --white: #ffffff;
   --grey: #626262;
+  --black: #545454;
   --active-white: #cccccc;
   --active-danger-color: #ce3e38;
   --border-radius: 3px;
@@ -16,14 +17,21 @@
   --error-color: #dc3636;
   --active-error-color: #cc3232;
   --border-white: #d5d5d5;
+  --card-background-white: #f5f5f5;
+  --card-background-grey: #dadada;
+  --main-font-color: #545454;
+  --main-font-color-light: #ffffff;
 }
-
+body {
+  color: var(--main-font-color)
+}
 /**
 Core override
  */
 .btn {
   background-color: var(--main-color) !important;
   border-radius: var(--border-radius);
+  color: var(--main-font-color-light) !important;
 }
 
 .btn:focus, .btn:hover, .btn:active {
@@ -59,7 +67,7 @@ Core override
   border-radius: 0 !important;
   box-shadow: none !important;
   outline: none !important;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--border-white);
   background-color: var(--main-color);
   margin: 10px 1px !important;
   padding: 10px 15px;
@@ -193,7 +201,7 @@ Register page
 Page Container
  */
 .main-page-wrapper {
-  margin-top: 50px;
+  margin-top: 10px;
   min-height: 600px;
 }
 
@@ -248,7 +256,7 @@ Page navigation
 }
 
 .navigation-wrapper #navigation .nav-item a {
-  color: var(--white);
+  color: var(--white) !important;
   font-size: 16px;
   font-weight: normal;
   text-decoration: none;
@@ -280,14 +288,14 @@ General Page CSS
 
 .container-header {
   /*background-color: #f3f3f3;*/
-  background-color: #f1f1f1;
+  background-color: var(--card-background-white);
   display: inline-block;
   width: 100%;
   padding: 10px 20px;
-  border-top: 1px solid #949494;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #b2b2b2;
-  border-right: 1px solid #b2b2b2;
+  border-top: 1px solid var(--border-white);
+  border-bottom: 1px solid var(--border-white);
+  border-left: 1px solid var(--border-white);
+  border-right: 1px solid var(--border-white);
 }
 
 /**
@@ -404,6 +412,12 @@ label {
 
 }
 
+.navigation-bar-wrapper {
+  min-height: unset;
+  display: inline-block;
+  width: calc(100% - 40px);
+  margin: 0 20px;
+}
 .navigate-bar {
 
 }
@@ -509,22 +523,22 @@ Custom Boxes
   display: inline-block;
   box-sizing: content-box;
   width: calc(100% - 40px);
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .box.t-border-box {
-  border-top: 1px solid #d7d7d7;
+  border-top: 1px solid var(--border-white);
 }
 
 .box.b-border-box {
-  border-bottom: 1px solid #d7d7d7;
+  border-bottom: 1px solid var(--border-white);
 }
 
 /**
 Icons
  */
 .copy-icon {
-  color: #9a9a9a;
+  color: var(--grey);
 }
 
 .copy-icon:hover {

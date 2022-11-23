@@ -62,6 +62,8 @@ Rails.application.routes.draw do
 
   put '/workflow/delete', to: 'workflow#delete'
 
+  post '/workflow_stage/add', to: 'workflow#delete'
+
   # Account routes
 
   get '/account', to: 'account#index'

@@ -1,4 +1,4 @@
-<div class="box">
+<div class="navigation-bar-wrapper">
   <div class="action-bar navigate-bar">
     <a href="<%= if @previous then
                    candidate_detail_url(id: @previous.id)
@@ -71,9 +71,181 @@
       </div>
     </div>
   </div>
-  <div>
-    <div id="resume-view-wrapper">
+  <div class="resume-preview-container">
+    <div id="resume-view-wrapper" class="">
       <iframe src="" id="resume-iframe-view" frameBorder="0"></iframe>
+    </div>
+    <div id="resume-side-panel">
+      <div class="side-panel-wrapper">
+        <div class="side-panel-group active">
+          <h3 class="side-panel-title">
+            Personal Profile
+            <i class="small material-icons">arrow_drop_up</i>
+          </h3>
+          <div class="side-panel-content">
+            <% if @model.first_name %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.name') %></label>
+                <div class="field-data"><%= "#{@model.first_name} #{@model.last_name}" %></div>
+              </div>
+            <% end %>
+            <% if @model.email %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.email') %></label>
+                <div class="field-data"><%= @model.email %></div>
+              </div>
+            <% end %>
+            <% if @model.dob %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.dob') %></label>
+                <div class="field-data"><%= @model.dob.to_fs(:date) %></div>
+              </div>
+            <% end %>
+            <% if @model.telephone %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.telephone') %></label>
+                <div class="field-data"><%= @model.telephone %></div>
+              </div>
+            <% end %>
+            <% if @model.gender %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.gender') %></label>
+                <div class="field-data"><%= CandidateGenderOption.to_label @model.gender.to_i %></div>
+              </div>
+            <% end %>
+            <% if @model.earliest_start_date %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.earliest_start_date') %></label>
+                <div class="field-data"><%= @model.earliest_start_date.to_fs(:date) %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="side-panel-group inactive">
+          <h3 class="side-panel-title">
+            Expectation
+            <i class="small material-icons">arrow_drop_down</i>
+          </h3>
+          <div class="side-panel-content">
+            <% if @model.desire_salary %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.desire_salary') %></label>
+                <div class="field-data"><%= @model.desire_salary %></div>
+              </div>
+            <% end %>
+            <% if @model.salary_mode %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.salary_mode') %></label>
+                <div class="field-data"><%= CandidateSalaryModeOption.to_label @model.salary_mode.to_i %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="side-panel-group inactive">
+          <h3 class="side-panel-title">
+            Locale
+            <i class="small material-icons">arrow_drop_down</i>
+          </h3>
+          <div class="side-panel-content">
+            <% if @model.address_country %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.address_country') %></label>
+                <div class="field-data"><%= @model.address_country %></div>
+              </div>
+            <% end %>
+            <% if @model.address_state %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.address_state') %></label>
+                <div class="field-data"><%= @model.address_state %></div>
+              </div>
+            <% end %>
+            <% if @model.address_city %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.address_city') %></label>
+                <div class="field-data"><%= @model.address_city %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="side-panel-group inactive">
+          <h3 class="side-panel-title">
+            Social
+            <i class="small material-icons">arrow_drop_down</i>
+          </h3>
+          <div class="side-panel-content">
+            <% if @model.social_linkedin_profile %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.social_linkedin_profile') %></label>
+                <div class="field-data">
+                  <a href="<%= @model.social_linkedin_profile %>">
+                    <%= @model.social_linkedin_profile %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            <% if @model.social_facebook_profile %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.social_facebook_profile') %></label>
+                <div class="field-data">
+                  <a href="<%= @model.social_facebook_profile %>">
+                    <%= @model.social_facebook_profile %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            <% if @model.social_twitter_profile %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.social_twitter_profile') %></label>
+                <div class="field-data">
+                  <a href="<%= @model.social_twitter_profile %>">
+                    <%= @model.social_twitter_profile %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            <% if @model.social_website %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.social_website') %></label>
+                <div class="field-data">
+                  <a href="<%= @model.social_website %>">
+                    <%= @model.social_website %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="side-panel-group inactive">
+          <h3 class="side-panel-title">
+            Trails
+            <i class="small material-icons">arrow_drop_down</i>
+          </h3>
+          <div class="side-panel-content">
+            <% if @model.users_id %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.users') %></label>
+                <div class="field-data"><%= CandidateUserOption.to_label @model.users_id %></div>
+              </div>
+            <% end %>
+            <% if @model.sources_id %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.sources') %></label>
+                <div class="field-data"><%= CandidateSourceOption.to_label @model.sources_id %></div>
+              </div>
+            <% end %>
+            <% if @model.jobs_id %>
+              <div class="panel-info-field">
+                <label for=""><%= t('candidate.field.jobs') %></label>
+                <div class="field-data">
+                  <a target="_blank" href="<%= job_edit_url(id: @model.jobs_id) %>">
+                    <%= CandidateJobOption.to_label @model.jobs_id %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -82,6 +254,23 @@
     require(['jquery'], function ($) {
         $(document).ready(function () {
             $("#resume-iframe-view").attr("src", '<%= @model.resume.url %>');
+        })
+        $('.side-panel-title ').on('click', function () {
+            let _this = $(this);
+            const icon = _this.find('i')
+            let parent = _this.closest('.side-panel-group')
+            let sidePanelContent = parent.find('.side-panel-content')
+            sidePanelContent.slideToggle()
+            if (parent.hasClass('active')) {
+                parent.toggleClass('active')
+                parent.addClass('inactive')
+                icon.html('arrow_drop_down')
+            } else {
+                parent.toggleClass('inactive')
+                parent.addClass('active')
+                icon.html('arrow_drop_up')
+            }
+
         })
     })
 </script>

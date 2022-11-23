@@ -1,10 +1,12 @@
 define(['jquery', 'dataTable'], function ($) {
     return {
         init: function (table) {
-            table.DataTable({
-                "searching": false,
-                "lengthChange": false
-            });
+            if (!table.hasClass('dataTable')) {
+                table.dataTable({
+                    "searching": false,
+                    "lengthChange": false
+                });
+            }
         }
     }
 })
