@@ -1,24 +1,17 @@
-# README
+# EZCollect
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+An opensource Recruitment tool that help business improve their recruitment process by allow HRs to manage Candidate data, schedule interviews, manage & leave review on interviews
 
-Things you may want to cover:
+## System requirement
+- Ruby 3
+- Rails 7+
+- Postgresql
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Roadmap
+- Complete features: manage candidate, schedule interviews, authenticate system users, manage workflow of recruitment
+- In progress of development...
+- Aiming features: 
+    - Integrate to schedule interview over Zoom / Google Meet
+    - Integrate with Google calendar
+    - Automation email base on interview workflow
